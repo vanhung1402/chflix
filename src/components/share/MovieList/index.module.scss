@@ -1,0 +1,19 @@
+@import 'mixins';
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 24px;
+
+  @include breakpoint-down('lg') {
+    grid-template-columns: auto auto auto;
+  }
+
+  @include breakpoint-down('md') {
+    grid-template-columns: auto auto;
+  }
+
+  @include breakpoint-down('sm') {
+    grid-template-columns: auto;
+  }
+}

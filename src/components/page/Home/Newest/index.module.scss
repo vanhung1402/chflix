@@ -1,0 +1,10 @@
+@import 'variables';
+
+.title {
+  // color: $text-primary-color;
+  font-weight: bold;
+  margin-bottom: 24px;
+  padding-left: 16px;
+  text-transform: capitalize;
+  border-left: 6px solid $text-primary-color;
+}

@@ -1,0 +1,246 @@
+@import 'variables';
+@import 'mixins';
+
+$brandname-font-size: 28px;
+$search-button-size: 32px;
+$search-button-border-radius: 18px;
+$header-menu-button-size: 38px;
+
+.header {
+  background-color: $bg-primary;
+
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  .headerContainerTablet {
+    overflow: hidden;
+    height: 0;
+    transition: all .25s ease-in;
+    border-bottom: 1px solid $border-color;
+
+    @include breakpoint-up('xl') {
+      display: none;
+    }
+
+    &.visible {
+      height: 188px;
+    }
+
+    .navLinksTablet {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 18px 0;
+
+      .navItem {
+        @include common-transition;
+        
+        &:hover {
+          color: $text-primary-color;
+        }
+      }
+    }
+  }
+
+  .headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow-y: hidden;
+    position: relative;
+    height: $header-height;
+
+    .brandNameContainer {
+      display: inline-flex;
+      align-items: center;
+      
+      .btnToggleMenu {
+        border: none;
+        cursor: pointer;
+        margin-right: 6px;
+        background-color: transparent;
+        color: $text-primary-color;
+        position: relative;
+        width: $header-menu-button-size;
+        height: $header-menu-button-size;
+
+        @include breakpoint-up('xl') {
+          display: none;
+        }
+
+        .iconMenuLeft, .iconPlus {
+          position: absolute;
+          left: 0;
+          transform: translateY(-50%); 
+        }
+
+        .iconMenuLeft {
+          color: $text-color;
+          transition: all .4s ease-in;
+        }
+
+        .iconPlus {
+          opacity: 0;
+
+          @include common-transition;
+        }
+
+        &.visible {
+          .iconMenuLeft {
+            opacity: 0;
+          }
+
+          .iconPlus {
+            opacity: 1;
+            transform: translateY(-50%) rotate(45deg);
+            left: -6px;
+          }
+        }
+      }
+
+      .brandName {
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: $brandname-font-size;
+      }
+      
+      .domainName {
+        font-weight: bold;
+        color: $text-primary-color;
+        font-size: ($brandname-font-size - 8px);
+      }
+    }
+
+    .navLinks {
+      display: flex;
+      list-style: none;
+
+      .navItem {
+        padding: 8px 12px;
+
+        @include common-transition;
+        
+        &:hover {
+          color: $text-primary-color;
+        }
+      }
+    }
+
+    .actionsContainer {
+      display: flex;
+      align-items: center;
+      gap: 0 24px;
+      font-size: 14px;
+    }
+
+    .searchWrapper {
+      display: flex;
+      align-items: center;
+      padding: 2px;
+      border-radius: 18px;
+      background-color: #151f30;
+      border: 1px solid #1d3557;
+
+      &:has(.searchInput:focus) {
+        border-color: #184e77;
+      }
+
+      .searchInput {
+        border: none;
+        background: transparent;
+        margin: 0;
+        padding: 4px 12px;
+        color: inherit;
+        border-radius: inherit;
+
+        &::placeholder {
+          font-size: 14px;
+          color: rgba($color: $text-color, $alpha: 0.7);
+        }
+      }
+    }
+
+    .searchButton {
+      height: $search-button-size;
+      width: $search-button-size;
+      border: none;
+      cursor: pointer;
+      border-top-right-radius: $search-button-border-radius;
+      border-bottom-right-radius: $search-button-border-radius;
+      background-color: transparent;
+      margin-right: 12px;
+      padding: 4px;
+      color: $text-primary-color;
+      
+      @include common-transition;
+      
+      &:hover {
+        color: $text-color;
+      }
+    }
+
+    .searchInput:focus,
+    .searchButton:focus {
+      border-color: #1d3557;
+      outline: none;
+    }
+
+    .searchFormWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      height: $header-height;
+      left: 0;
+      right: 0;
+      bottom: -$header-height;
+      background-color: $bg-primary;
+      transition: all .25s ease-in;
+
+      &.visible {
+        bottom: 0;
+      }
+
+      .btnClose {
+        color: $text-primary-color;
+        border: none;
+        padding: 4px;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        outline: none;
+        background-color: transparent;
+        margin-left: 8px;
+
+        @include common-transition;
+
+        &:hover {
+          color: $text-color;
+        }
+      }
+    }
+  }
+}
+
+.tabletHidden {
+  @include breakpoint-down('xl') {
+    display: none !important;
+  } 
+}
+
+.mobileHidden {
+  @include breakpoint-down('md') {
+    display: none !important;
+  } 
+}
+
+.mobileVisible {
+  display: none;
+
+  @include breakpoint-down('md') {
+    display: block !important;
+  }
+}

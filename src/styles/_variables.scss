@@ -1,0 +1,33 @@
+$text-color: #e0e0e0;
+$text-primary-color: #0077b6;
+
+$bg-primary: #131720;
+$bg-secondary: #151f30;
+$bg-info: linear-gradient(30deg, rgba(47,128,237,0.7) 0%, rgba(47,128,237,0.9) 100%);
+
+$border-color: #151f30;
+
+$header-height: 86px;
+$movie-item-height: 420px;
+
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+$breakpoints-up : (
+  'xxl': ( min-width: $xxl ),
+  'xl': ( min-width: $xl ),
+  'lg': ( min-width: $lg ),
+  'md': ( min-width: $md ),
+  'sm': ( min-width: $sm ),
+) !default;
+
+$breakpoints-down : (
+  'sm': ( max-width: $sm - 0.1px ),
+  'md': ( max-width: $md - 0.1px ),
+  'lg': ( max-width: $lg - 0.1px ),
+  'xl': ( max-width: $xl - 0.1px ),
+  'xxl': ( max-width: $xxl - 0.1px ),
+) !default;
