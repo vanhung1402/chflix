@@ -1,6 +1,4 @@
-import { GetServerSideProps } from 'next';
-
-const pageCategory = (props: GetServerSideProps) => {
+const pageCategory = () => {
   return (
     <div>
       Enter
